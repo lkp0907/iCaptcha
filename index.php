@@ -39,7 +39,7 @@ h1,h2,p {
 				<h1>iCaptcha</h1>
 				<p>It is Captcha Utility with php-gd, jquery, ajax</p>
 				<h2>How to use ?</h2>
-				<p>1. Download Source from git</p>
+				<p>1. Download Source from git <a href="https://github.com/lkp0907/iCaptcha" target="_blank"> <img src="img/GitHub-Mark-32px.png"></a></p>
 				<p>2. Upload source to your server</p>
 				<p>3. import 'javascript' to your website or whatever</p>
 				<p><strong>Don't change folder positioning</strong></p>

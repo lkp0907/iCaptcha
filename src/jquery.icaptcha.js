@@ -20,8 +20,8 @@
 			success: function(data){
 			
 				var html = '  <div style="text-align:center;">\
-									<h3>이미지에 보이는 글자를 입력해주세요</h3>\
-									<b>로봇을 확인하기위해 진행하는 절차입니다.</b>\
+									<h3>Please Input Text in Image</h3>\
+									<b>It is just check you are not robot.</b>\
 									<div style="display:block;margin-bottom:20px;margin-top:20px;">\
 										<img id="captchaImg" src="'+settings.path+'/'+data.img+'">\
 									</div>\
@@ -53,9 +53,11 @@
 							//$("#captchaImg").attr("src",data.img);
 							console.log(JSON.stringify(data));
 							if(data.error==="0"){
-								$("#result").text("정답");	
+								$("#result").text("Correct");	
+								$("#result").css("color","green");
 							}else if(data.error==="1"){
-								$("#result").text("다시입력해주세요");
+								$("#result").text("Wrong Answer");
+								$("#result").css("color","red");
 							}
 							
 						}
@@ -70,8 +72,9 @@
 						dataType: "json",
 						data: formData,
 						success: function(data){
-							$("#captchaImg").attr("src",data.img);
-							$("#result").text("새로고침");
+							$("#captchaImg").attr("src",settings.path+"/"+data.img);
+							$("#result").text("Refresh");
+							$("#result").css("color","black");
 						}
 					});
 				

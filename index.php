@@ -66,18 +66,13 @@ h1,h2,p {
 			</div>
 		</div>
 	</div>
-	<div class="section" id="section2">
-		<div class="content">
-		3
-		</div>
-	</div>
 </div>
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="src/assets/vendor/fullPageMaster/javascript.fullPage.js"></script>
 <script src="src/jquery.icaptcha.js"></script>
 <script type="text/javascript">
 	fullpage.initialize('#fullpage', {
-		anchors: ['Intro','Example','Contact'],
+		anchors: ['Intro','Example'],
 		menu: false,
 		
 		css3:true,

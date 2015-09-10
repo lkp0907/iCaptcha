@@ -30,6 +30,7 @@
 										<input type="text" name="input"/>\
 										<input type="hidden" name="flag" value="1"/>\
 										<input type="hidden" name="lang" value="'+settings.lang+'">\
+										<input type="hidden" name="type" value="'+settings.types+'">\
 										<input type="button" id="btnSendCaptcha" value="submit" name="submit"/>\
 									</form>\
 									<form id="refreshCaptcha" name="refreshCaptcha" action="" method="POST">\

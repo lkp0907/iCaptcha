@@ -56,6 +56,12 @@ h1,h2,p {
 					<option value="jp">Japanese</option>
 					<option value="en">English</option>
 				</select>
+				<select id="typeSelector">
+					<option value="1">Clean</option>
+					<option value="2">Line</option>
+					<option value="3">Dot</option>
+					<option value="4">Union</option>
+				</select>
 				</center>
 				<div id="icaptcha"></div>
 				<br>
@@ -74,27 +80,46 @@ h1,h2,p {
 	fullpage.initialize('#fullpage', {
 		anchors: ['Intro','Example'],
 		menu: false,
-		
 		css3:true,
 		fitToSection: true,
 		continuousVertical: false
 	});
 	$("#icaptcha").iCaptcha({
 		path: 'src',
-		lang:'ko'
+		lang:'ko',
+		type : '1'
 	});
 	
 	$('#languageSelector').change(function(){
 		var langs = $("#languageSelector option:selected").val();
+		var types = $("#typeSelector option:selected").val();
 		$("#icaptcha").iCaptcha({
 			path: 'src',
-			lang:langs
+			lang:langs,
+			type : types
 		});
-		$("#code").html(' $("#icaptcha").iCaptcha({ \n \
-           lang:"'+langs+'" \n \
+$("#code").html(' $("#icaptcha").iCaptcha({ \n \
+           lang:"'+langs+'", \n \
+           type:"'+types+'"\n\
  });  \
 ');
-	});
+});
+
+	$('#typeSelector').change(function(){
+		var langs = $("#languageSelector option:selected").val();
+		var types = $("#typeSelector option:selected").val();
+		$("#icaptcha").iCaptcha({
+			path: 'src',
+			lang:langs,
+			type : types
+		});
+$("#code").html(' $("#icaptcha").iCaptcha({ \n \
+           lang:"'+langs+'", \n \
+           type:"'+types+'",\n\
+ });  \
+');
+});
+
 </script>
 
 

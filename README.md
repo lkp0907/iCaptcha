@@ -14,8 +14,11 @@ This is pretty simple captcha jquery plugin
 
 ## Usage
 As you can see in the example files, you will need to include:
+
 	- [jQuery Library](http://jquery.com/)
+	
 	- Font ( suitable for your language )
+	 
 	- php-gd
 
 ###Including files:
@@ -38,7 +41,8 @@ After that using jquery grammer with iCaptcha plugin.
 
 $("#icaptcha").iCaptcha({
 		path: 'src', // parent path where your captcha.php file  , if src/catcha.php then, path : 'src'
-		lang:'ko'	 // language which u want there are three options ko:korean, jp:japanese, en:english 
+		lang:'ko',	 // language which u want there are three options ko:korean, jp:japanese, en:english 
+		type:'1'	// 1 : clean , 2: line , 3:dot , 4:combine
 });
 
 ```

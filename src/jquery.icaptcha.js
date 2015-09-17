@@ -18,8 +18,10 @@
 			dataType: "json",
 			data: settings,
 			success: function(data){
-			
-				var html = '  <div style="text-align:center;">\
+				
+				//  이 곳에서 이미지를 받아옵니다. 추가로, idx 값을 설정해주어야 합니다.
+				// idx < 사용자 요청 id
+				var html = '<div style="text-align:center;">\
 									<h3>Please Input Text in Image</h3>\
 									<b>It is just check you are not robot.</b>\
 									<div style="display:block;margin-bottom:20px;margin-top:20px;">\
@@ -29,6 +31,7 @@
 									/ >\
 										<input type="text" name="input"/>\
 										<input type="hidden" name="flag" value="1"/>\
+										<input type="hidden" name="idx" value="'+data.idx+'"/>\
 										<input type="hidden" name="lang" value="'+settings.lang+'">\
 										<input type="hidden" name="type" value="'+settings.types+'">\
 										<input type="button" id="btnSendCaptcha" value="submit" name="submit"/>\
@@ -45,6 +48,7 @@
 				
 				$("#btnSendCaptcha").click(function(){
 					var formData = $("#sendCaptcha").serialize();
+					console.log(JSON.stringify(formData));
 					$.ajax({
 						type: "POST",
 						url: settings.path+"/captcha.php",

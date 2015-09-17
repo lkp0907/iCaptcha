@@ -4,11 +4,12 @@
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
 session_start();
-$_SESSION['count'] = time();
+$idx = time();
 $image;
 $lang = 'ko';
 $flag = 5;
 $type = 1;
+
 if(isset($_POST['type'])){
 	$type = $_POST['type'];
 }
@@ -18,10 +19,12 @@ if(isset($_POST['lang'])){
 if (isset($_POST["flag"])) { // flag 가 존재할경우 
     $input = $_POST["input"];
     $flag = $_POST["flag"];
+	$idx = $_POST["idx"];
 }	
 if ($flag == 1) { // input 값 넘어왔을때
-	
-    if ($input == $_SESSION['captcha_string']) {
+	$captchId = "captcha_$idx";
+
+    if ($input == $_SESSION[$captchId]) {
 		// 성공
 		echo json_encode(array('error'=>'0'));
     } else {
@@ -36,6 +39,7 @@ if ($flag == 1) { // input 값 넘어왔을때
 
 function  create_image()
 {
+	global $idx;
 	global $lang;
     global $image;
 	global $type;
@@ -47,7 +51,7 @@ function  create_image()
     imagefilledrectangle($image, 0, 0, 200, 50, $background_color);
 	
 	if($type==2 || $type==4){
-		for ($i = 0; $i < 3; $i++) {
+		for ($i = 0; $i < 4; $i++) {
 			imageline($image, 0, rand() % 50, 200, rand() % 50, $line_color);
 		}	
 	}
@@ -57,8 +61,6 @@ function  create_image()
 		}	
 	}
     
-	//$letters = 'あいうえおかきくけこさしすせそたちつてとなにぬねのはひふへほまみむめもやゆよわをん';
-    //$letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
 	$letters = array('가','나','다','라','마','바','사','아','자','차','타','카','타','파','하');
 	if($lang == 'jp'){
 		$letters = array('ぱ','ぴ','ぷ','ぺ','ぽ','が','ざ','だ','ば','ぎ','じ','ぢ','び','ぐ','ず','づ','ぶ','げ','ぜ','で','べ','ご','ぞ','ど','ぼ','あ','か','さ','た','な','は','ま','や','ら','わ','い','き','し','ち','に','ひ','み','り','う','く','す','つ','ぬ','ふ','む','ゆ','る','ん','え','け','せ','て','ね','へ','め','れ','お','こ','そ','と','の','ほ','も','よ','ろ','を');	
@@ -76,19 +78,19 @@ function  create_image()
         $letter = $letters[rand(0, $len - 1)];
         
 		// Change Here !!!!
-		$font = '/home/devsfolder/iCaptcha/src/font/ARIALUNI.TTF'; 
+		$font = 'font/ARIALUNI.TTF'; 
 		// Must Change Here !!!!
 		
 		imagettftext ($image , 24.0 ,0, 40 + ($i * 30), 35, $text_color, $font, $letter );
         $word .= $letter;
     }
-    $_SESSION['captcha_string'] = $word;
+    $_SESSION["captcha_$idx"] = $word;
     $images = glob("*.png");
     foreach ($images as $image_to_delete) {
         @unlink($image_to_delete);
     }
-    imagepng($image, "img/image" . $_SESSION['count'] . ".png");
-	$return = array('img'=> "img/image" . $_SESSION['count'] . ".png" );
+    imagepng($image, "img/image" .$idx. ".png");
+	$return = array('img'=> "img/image" .$idx . ".png",'idx'=>$idx);
 	echo json_encode($return);
 }
 ?>

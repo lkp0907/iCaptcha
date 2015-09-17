@@ -21,6 +21,9 @@
 				
 				//  이 곳에서 이미지를 받아옵니다. 추가로, idx 값을 설정해주어야 합니다.
 				// idx < 사용자 요청 id
+				// 디자인을 바꾸어주세요, 단 hidden Input 값들은 모두 들어가야합니다.
+				///////////////////////////////Change Design/////////////////////////////////////////////////
+				
 				var html = '<div style="text-align:center;">\
 									<h3>Please Input Text in Image</h3>\
 									<b>It is just check you are not robot.</b>\
@@ -43,8 +46,8 @@
 									<h3>결과창입니다</h3>\
 									<p id="result">-</p>\
 								</div>';
-								
 				obj.html(html);
+				////////////////////////////////////////////////////////////////////////////////////////////////
 				
 				$("#btnSendCaptcha").click(function(){
 					var formData = $("#sendCaptcha").serialize();

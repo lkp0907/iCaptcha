@@ -15,14 +15,15 @@ This is pretty simple captcha jquery plugin
 ## Usage
 As you can see in the example files, you will need to include:
 
-	- [jQuery Library](http://jquery.com/)
+	- [jQuery Library](http://jquery.com/) 
 	
 	- Font ( suitable for your language )
 	 
-	- php-gd
+	- php-gd ( must install & enabled )
 
 ###Including files:
 ```html
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="src/jquery.icaptcha.js"></script>
 	
 ```

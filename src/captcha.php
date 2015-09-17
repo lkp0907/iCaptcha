@@ -11,15 +11,15 @@ $flag = 5;
 $type = 1;
 
 if(isset($_POST['type'])){
-	$type = $_POST['type'];
+	$type = trim($_POST['type']);
 }
 if(isset($_POST['lang'])){
-	$lang = $_POST['lang'];
+	$lang = trim($_POST['lang']);
 }
 if (isset($_POST["flag"])) { // flag 가 존재할경우 
-    $input = $_POST["input"];
-    $flag = $_POST["flag"];
-	$idx = $_POST["idx"];
+    $input = trim($_POST["input"]);
+    $flag = trim($_POST["flag"]);
+	$idx = trim($_POST["idx"]);
 }	
 if ($flag == 1) { // input 값 넘어왔을때
 	$captchId = "captcha_$idx";
@@ -85,7 +85,7 @@ function  create_image()
         $word .= $letter;
     }
     $_SESSION["captcha_$idx"] = $word;
-    $images = glob("*.png");
+    $images = glob("img/*.png");
     foreach ($images as $image_to_delete) {
         @unlink($image_to_delete);
     }

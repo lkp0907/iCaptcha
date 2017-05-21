@@ -21,7 +21,7 @@ As you can see in the example files, you will need to include:
 	 
 	- php-gd ( must install & enabled )
 
-###Including files:
+### Including files:
 ```html
 	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="src/jquery.icaptcha.js"></script>
@@ -29,13 +29,13 @@ As you can see in the example files, you will need to include:
 ```
 
 
-###Required HTML structure
+### Required HTML structure
 Create Div Tag (`<div id="icaptcha">` in this case).
 ```html
 <div id="icaptcha"></div>
 ```
 
-###Script
+### Script
 After that using jquery grammer with iCaptcha plugin.
 
 ```javascript
@@ -47,5 +47,5 @@ $("#icaptcha").iCaptcha({
 });
 
 ```
-##Contact
+## Contact
 Please [Email](mailto:ocsoon.jin@email.com) to me. 
